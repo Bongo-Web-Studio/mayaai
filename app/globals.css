@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Register your custom font */
+@font-face {
+  font-family: "SFPRODISPLAYREGULAR";
+  src: url("../public/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "Fontspring";
+  src: url("../public/Fontspring-DEMO-P22MackinacProMedium.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Make this the default font for the whole project */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "SFPRODISPLAYREGULAR", "Fontspring";
+}
+
+/* Main blended gradient + texture */
+.gradient-texture {
+  position: absolute;
+  inset: 0;
+  /* base linear gradient */
+  background-image: radial-gradient(
+      600px circle at 8% 12%,
+      rgba(255, 200, 80, 0.45),
+      transparent 30%
+    ),
+    radial-gradient(
+      520px circle at 92% 82%,
+      rgba(80, 140, 255, 0.36),
+      transparent 28%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(249, 115, 22, 1) 0%,
+      rgba(239, 68, 68, 1) 50%,
+      rgba(59, 130, 246, 1) 100%
+    );
+  background-blend-mode: screen, screen, normal;
+  filter: saturate(115%) contrast(102%);
+  opacity: 1;
+  will-change: background;
+  z-index: 10;
+}
+
+/* subtle corner flares to accent the sides/corners */
+.corner-flares {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+      280px circle at 0% 0%,
+      rgba(255, 220, 150, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      220px circle at 100% 100%,
+      rgba(120, 160, 255, 0.18),
+      transparent 38%
+    ),
+    radial-gradient(
+      220px circle at 0% 100%,
+      rgba(255, 120, 140, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      180px circle at 100% 0%,
+      rgba(80, 220, 200, 0.1),
+      transparent 45%
+    );
+  mix-blend-mode: soft-light;
+  opacity: 0.9;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* fine grain / noise texture using SVG turbulence for organic feel */
+.gradient-texture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'>\
+      <filter id='t'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter>\
+      <rect width='100%' height='100%' filter='url(#t)' opacity='0.06'/>\
+    </svg>");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  z-index: 20;
+  backdrop-filter: none;
+}
+
+/* optional: soften edges and ensure text/video contrast */
+.gradient-texture,
+.corner-flares {
+  transition: opacity 300ms ease;
+}
+
+/* ensure children like text are above textures */
+.relative > *:not(.gradient-texture):not(.corner-flares) {
+  position: relative;
+  z-index: 30;
 }
