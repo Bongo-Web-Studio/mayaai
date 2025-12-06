@@ -39,12 +39,12 @@ const HeroSection = () => {
         {/* Headline */}
         <h1
           style={{ fontFamily: "Fontspring" }}
-          className={` text-6xl md:text-8xl text-[#25170D] `}
+          className={` text-6xl md:text-7xl text-[#25170D] `}
         >
           <h1 className="flex justify-center items-center ">
             Meet Maya{" "}
             <img
-              className="w-[3.5cm] h-[4cm] absolute top-[16%] left-[63%]"
+              className="w-[2.6cm] h-[3cm] absolute top-[20%] left-[62%]"
               src="/bb.png"
               alt=""
             />
@@ -55,7 +55,7 @@ const HeroSection = () => {
         {/* Subtext */}
         <p
           style={{ fontFamily: "SFPRODISPLAYREGULAR" }}
-          className={`text-2xl ${linkColor} mb-5 mt-6 max-w-2xl mx-auto`}
+          className={`text-xl ${linkColor} mb-5 mt-6 max-w-xl mx-auto`}
         >
           Maya, a super AI that pitches your profile on WhatsApp to thousands of
           founders, HRs, and clients.
@@ -79,7 +79,7 @@ const HeroSection = () => {
 
         {/* The original is a specific image/gradient. We'll simulate the look and feel 
             using a large background gradient and a simple dotted overlay for effect. */}
-        <div className="max-w-7xl w-full h-[70vh] rounded-[20px]   p-3 bg-white/60 border border-gray-100">
+        <div className="w-[70%]  h-[70vh] rounded-[20px]   p-3 bg-white/60 border border-gray-100">
           <div className=" w-full h-full bg-linear-to-r p-3  rounded-[12px]  from-orange-400 via-red-500 to-blue-500 opacity-100">
             <video
               className="w-full h-full object-cover  rounded-[8px] "
