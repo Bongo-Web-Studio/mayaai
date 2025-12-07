@@ -1,6 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
+import HeadLine from "./HeadLine";
 // This component uses Tailwind CSS for styling.
 
 const HeroSection = () => {
@@ -36,21 +37,7 @@ const HeroSection = () => {
           Helped over 100 companies
         </p>
 
-        {/* Headline */}
-        <h1
-          style={{ fontFamily: "Fontspring" }}
-          className={` text-6xl md:text-7xl text-[#25170D] `}
-        >
-          <h1 className="flex justify-center items-center ">
-            Meet Maya{" "}
-            <img
-              className="w-[2.6cm] h-[3cm] absolute top-[20%] left-[62%]"
-              src="/bb.png"
-              alt=""
-            />
-          </h1>{" "}
-          A better way to hire.
-        </h1>
+    <HeadLine/>
 
         {/* Subtext */}
         <p
@@ -80,9 +67,9 @@ const HeroSection = () => {
         {/* The original is a specific image/gradient. We'll simulate the look and feel 
             using a large background gradient and a simple dotted overlay for effect. */}
         <div className="w-[70%]  h-[70vh] rounded-[20px]   p-3 bg-white/60 border border-gray-100">
-          <div className=" w-full h-full bg-linear-to-r p-3  rounded-[12px]  from-orange-400 via-red-500 to-blue-500 opacity-100">
+          <div className=" w-full h-full bg-linear-to-r p-3  rounded-xl  from-orange-400 via-red-500 to-blue-500 opacity-100">
             <video
-              className="w-full h-full object-cover  rounded-[8px] "
+              className="w-full h-full object-cover  rounded-lg "
               autoPlay
               loop
               muted
